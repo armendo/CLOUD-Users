@@ -1,6 +1,6 @@
 /*
- * Created by Fernando Mendoza on 2016.02.29  * 
- * Copyright © 2016 Fernando Mendoza. All rights reserved. * 
+ * Created by Osman Balci on 2016.02.14  * 
+ * Copyright © 2016 Osman Balci. All rights reserved. * 
  */
 package com.mycompany.sessionbeanpackage;
 
@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 
 /**
  *
- * @author Fer
+ * @author Balci
  */
 public abstract class AbstractFacade<T> {
 

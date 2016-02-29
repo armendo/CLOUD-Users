@@ -1,6 +1,6 @@
 /*
- * Created by Fernando Mendoza on 2016.02.29  * 
- * Copyright © 2016 Fernando Mendoza. All rights reserved. * 
+ * Created by Osman Balci on 2016.02.14  * 
+ * Copyright © 2016 Osman Balci. All rights reserved. * 
  */
 package com.mycompany.entitypackage;
 
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Fer
+ * @author Balci
  */
 @Entity
 @Table(name = "User")
@@ -46,6 +46,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "User.findBySecurityQuestion", query = "SELECT u FROM User u WHERE u.securityQuestion = :securityQuestion"),
     @NamedQuery(name = "User.findBySecurityAnswer", query = "SELECT u FROM User u WHERE u.securityAnswer = :securityAnswer"),
     @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email")})
+
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -128,13 +129,14 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public User(Integer id, String username, String password, String firstName, String lastName, String address1, String city, String state, int zipcode, int securityQuestion, String securityAnswer, String email) {
+    public User(Integer id, String username, String password, String firstName, String lastName, String address1, String address2, String city, String state, int zipcode, int securityQuestion, String securityAnswer, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address1 = address1;
+        this.address2 = address2;
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;

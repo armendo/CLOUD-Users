@@ -1,9 +1,10 @@
 /*
- * Created by Fernando Mendoza on 2016.02.29  * 
- * Copyright © 2016 Fernando Mendoza. All rights reserved. * 
+ * Created by Osman Balci on 2016.02.14  * 
+ * Copyright © 2016 Osman Balci. All rights reserved. * 
  */
 package com.mycompany.entitypackage;
 
+import com.mycompany.managers.Constants;  // Added
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Fer
+ * @author Balci
  */
 @Entity
 @Table(name = "Photo")
@@ -30,7 +31,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Photo.findAll", query = "SELECT p FROM Photo p"),
     @NamedQuery(name = "Photo.findById", query = "SELECT p FROM Photo p WHERE p.id = :id"),
+    @NamedQuery(name = "Photo.findPhotosByUserId", query = "SELECT p FROM Photo p WHERE p.userId.id = :userId"),
     @NamedQuery(name = "Photo.findByExtension", query = "SELECT p FROM Photo p WHERE p.extension = :extension")})
+
 public class Photo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -60,6 +63,12 @@ public class Photo implements Serializable {
         this.extension = extension;
     }
 
+    // This method is added to the generated code
+    public Photo(String extension, User id) {
+        this.extension = extension;
+        userId = id;
+    }
+    
     public Integer getId() {
         return id;
     }
@@ -107,6 +116,26 @@ public class Photo implements Serializable {
     @Override
     public String toString() {
         return "com.mycompany.entitypackage.Photo[ id=" + id + " ]";
+    }
+    
+    //-----------------------------------------------------
+    //The following methods are added to the generated code
+    //-----------------------------------------------------
+    
+    public String getFilePath() {
+        return Constants.ROOT_DIRECTORY + getFilename();
+    }
+
+    public String getFilename() {
+        return getId() + "." + getExtension();
+    }
+    
+    public String getThumbnailName() {
+        return getId() + "_thumbnail." + getExtension();
+    }
+    
+    public String getThumbnailFilePath() {
+        return Constants.ROOT_DIRECTORY + getThumbnailName();
     }
     
 }
