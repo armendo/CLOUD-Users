@@ -36,6 +36,7 @@ public class LoginManager implements Serializable {
    * Creates a new instance of LoginManager
    */
   public LoginManager() {
+      System.out.println("WAKAKA");
   }
 
   /**
